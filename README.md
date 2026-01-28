@@ -1,4 +1,4 @@
-# 📦 Nom du projet
+# 📦 K6ZIO
 
 Plateforme SaaS de gestion et de partage de documents, pensée pour faciliter la collaboration entre équipes internes et clients, avec une architecture moderne, sécurisée et évolutive.
 
