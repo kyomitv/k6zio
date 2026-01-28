@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📦 Nom du projet
 
-## Getting Started
+Plateforme SaaS de gestion et de partage de documents, pensée pour faciliter la collaboration entre équipes internes et clients, avec une architecture moderne, sécurisée et évolutive.
 
-First, run the development server:
+## 🎯 Objectif du projet
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Ce projet vise à fournir une application web permettant :
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- La gestion centralisée de documents (principalement des PDF)
+- Le partage structuré de fichiers entre équipes et clients
+- Une authentification sécurisée des utilisateurs
+- Une organisation claire des accès et des contenus
+- Une intégration transparente avec Google Drive pour le stockage des documents
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+L’objectif est de proposer une solution simple à utiliser, robuste techniquement, et facile à maintenir sur le long terme.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧱 Architecture générale
 
-## Learn More
+L’application repose sur une stack moderne orientée SaaS :
 
-To learn more about Next.js, take a look at the following resources:
+- **Frontend** : Next.js (React)
+- **Backend** : Next.js (API Routes / Server Actions)
+- **Authentification** : Supabase Auth
+- **Base de données** : Supabase (PostgreSQL)
+- **Stockage des fichiers** : Google Drive
+- **Gestion des accès** : Rôles et permissions définis côté application
+- **Paiements** : Non inclus (hors scope volontairement)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Cette architecture permet une forte cohérence entre le front et le back, tout en limitant la complexité opérationnelle.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔐 Authentification & utilisateurs
 
-## Deploy on Vercel
+L’authentification est entièrement gérée par **Supabase** :
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Inscription et connexion sécurisées
+- Gestion des sessions
+- Rôles utilisateurs (ex. admin, membre équipe, client)
+- Séparation claire des droits d’accès selon le rôle
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📁 Gestion des documents
+
+Les documents sont stockés sur **Google Drive**, dans une arborescence organisée automatiquement :
+
+- Dossiers par client
+- Sous-dossiers par projet ou catégorie
+- Accès partagé aux équipes internes et aux clients concernés
+
+L’application agit comme une interface de gestion et de visualisation, sans dupliquer inutilement les fichiers.
+
+## 🗂️ Base de données
+
+La base de données Supabase permet de stocker :
+
+- Les utilisateurs et leurs rôles
+- Les métadonnées des documents
+- Les relations entre clients, projets et fichiers
+- Les permissions d’accès
+
+Les fichiers eux-mêmes ne sont pas stockés en base, uniquement leurs références.
